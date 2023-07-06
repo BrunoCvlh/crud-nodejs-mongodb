@@ -18,6 +18,11 @@ db.once('open', () => {
 
 const app = express()
 
+app.set('view engine', 'ejs')
+
+app.use(express.static('js'))
+app.use(express.static('css'))
+app.use(express.static('imgs'))
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())

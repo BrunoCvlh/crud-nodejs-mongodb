@@ -1,7 +1,8 @@
 const Employee = require('../models/Employee')
 
+
 //Show the list of Employees
-const index = (req, res, next) => {
+/*const index = (req, res, next) => {
   Employee.find()
     .then(response => {
       res.json({
@@ -14,6 +15,8 @@ const index = (req, res, next) => {
       })
     })
 }
+*/
+
 
 //Show single employee
 const show = (req, res, next) => {
@@ -33,18 +36,21 @@ const show = (req, res, next) => {
 const store = (req, res, next) => {
   let employee = new Employee({
     name: req.body.name,
-    email: req.body.email
+    sobrenome: req.body.sobrenome,
+    celular: req.body.celular,
+    cep: req.body.cep,
+    rua: req.body.rua,
+    bairro: req.body.bairro,
+    numero: req.body.numero,
+    cidade: req.body.cidade,
+    estado: req.body.estado
   })
   employee.save()
     .then(response => {
-      res.json({
-        message: 'Employee added sucessfully!'
-      })
+      res.render('vendaConcluida.ejs')
     })
     .catch(error => {
-      res.json({
-        message: 'An error occured'
-      })
+      res.send('Houve um erro em nosso servidor. Recarregue a página e tente novamente.')
     })
 }
 
@@ -54,7 +60,14 @@ const update = (req, res, next) => {
 
   let updatedData = {
     name: req.body.name,
-    email: req.body.email
+    sobrenome: req.body.sobrenome,
+    celular: req.body.celular,
+    cep: req.body.cep,
+    rua: req.body.rua,
+    bairro: req.body.bairro,
+    numero: req.body.numero,
+    cidade: req.body.cidade,
+    estado: req.body.estado
   }
 
   Employee.findByIdAndUpdate(employeeID, { $set: updatedData })
@@ -88,5 +101,5 @@ const destroy = (req, res, next) => {
 }
 
 module.exports = {
-  index, show, store, update, destroy
+  show, store, update, destroy
 }

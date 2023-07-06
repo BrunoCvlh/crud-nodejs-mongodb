@@ -3,7 +3,15 @@ const Schema = mongoose.Schema
 
 const employeeSchema = new Schema({
   name: {type: String},
-  email: {type: String}
+  sobrenome: {type: String},
+  email: {type: String},
+  celular: {type: Number},
+  cep: {type: Number},
+  rua: {type: String},
+  bairro: {type: String},
+  numeroComplemento: {type: String},
+  cidade: {type: String},
+  estado: {type: String},
 }, {timestamps: true})
 
 const Employee = mongoose.model('Employee', employeeSchema)

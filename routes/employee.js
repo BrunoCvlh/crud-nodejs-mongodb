@@ -5,13 +5,28 @@ const EmployeeController = require('../controllers/EmployeeController')
 
 
 
-router.get('/', EmployeeController.index)
-router.post('/show', EmployeeController.show)
-router.post('/store', EmployeeController.store)
-router.get('/store', (req, res) => {
+router.get('/', (req, res) => {
     res.render('index.ejs')
 })
+
+router.get('/carrinho', (req, res) => {
+    res.render('carrinhoSolo.ejs')
+})
+
+router.get('/contate', (req, res)=> {
+    res.render('contate.ejs')
+})
+
+router.post('/show', EmployeeController.show)
+
+router.post('/store', EmployeeController.store)
+
+router.get('/store', (req, res) => {
+    res.render('formUser.ejs')
+})
+
 router.post('/update', EmployeeController.update)
+
 router.post('/delete', EmployeeController.destroy)
 
 module.exports = router
